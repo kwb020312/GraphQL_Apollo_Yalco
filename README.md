@@ -98,3 +98,30 @@ const resolvers = {
 <img src="gitImages\Arg.PNG">
 
 위와같다.
+
+### :fire: Mutation
+
+Mutation은 데이터를 추가, 수정, 삭제 할 때 필요한 질의어이며 이는 간단하게 구현이 가능하다
+
+우선 gql함수 내부에 Query가 아닌 Mutation을 선언한다
+
+```javascript
+gql`
+  type Mutation {
+    del(id: Int): String
+  }
+`;
+```
+
+위와 같은 방법으로 선언이 가능하며, resolvers 에서도 또한
+
+```javascript
+const resolvers = {
+  Mutation: {
+    ItIsDeleteFunc: (parent, args, context, info) =>
+      datas.filter((data) => data.id === args.id)[0],
+  },
+};
+```
+
+위와 같은 방법으로 Query와 매우 유사하게 데이터를 관리할 수 있다.
