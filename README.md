@@ -6,6 +6,8 @@
 
 GraphQL & Apollo 에 대한 학습을 위하여 만들었음
 
+해당 Repository 는 <a href="https://www.yalco.kr/">얄코님의 블로그</a>를 보고 참고되었음
+
 ### :sunglasses: GraphQL
 
 어떠한 장점이 있어서 REST_API 보다 GraphQL을 사용할까?? 해당 교육자는 이렇게 말한다
@@ -27,3 +29,45 @@ GraphQL & Apollo 에 대한 학습을 위하여 만들었음
 <img src="gitImages\Why Apollo.jpg">
 
 GraphQL 공식문서에도 나와있는 지원 플렛폼이며, 프론트 & 백엔드 단을 모두 지원하기 때문이며 이를 웹에 표시하는 프레임워크로는 리엑트를 사용한다.
+
+### :mag_right: Query Data
+
+데이터를 조회할 때는 어떻게 해야할까?? 해당 강의는 기본적인 데이터베이스 데이터를 구성하기 쉽게 작업해주기 때문에 우린 쿼리만 쏘면 되는데 GraphQL을 사용해 Apollo서버에 데이터를 요청하는 방법은 아래와 같다.
+
+```javascript
+const { gql, ApolloServer } = require("apollo-server");
+const database = require("./database");
+
+// gql 태그로 Query 타입 지정
+const typeDefs = gql`
+  type Query {
+    teams: [Team]
+  }
+  type Team {
+    id: Int
+    manager: String
+    office: String
+    extension_number: String
+    mascot: String
+    cleaning_duty: String
+    project: String
+  }
+`;
+
+// Query명령어에 teams를 요청할 경우 database.teams 데이터를 사용함
+const resolvers = {
+  Query: {
+    teams: () => database.teams,
+  },
+};
+
+// 위의 타입지정과 resolvers를 인자로 넘겨주고 server.listen()시 서버시작, 인자로 url을 받을 수 있음
+const server = new ApolloServer({ typeDefs, resolvers });
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
+```
+
+<img src="gitImages\ReturnDatas.jpg">
+
+출력 결과는 위와같음
