@@ -71,3 +71,30 @@ server.listen().then(({ url }) => {
 <img src="gitImages\ReturnDatas.jpg">
 
 출력 결과는 위와같음
+
+### :airplane: 인자있는 쿼리 날리기
+
+특정 정보를 요청하려면 어떠한 처리를 해야할까??
+
+우선 gql함수 내부에 Query 문 안쪽에 어떠한 형식으로 데이터를 부를지 정의해야한다.
+
+예를들어 특정 번호를 가진 사람의 정보를 얻고싶다면
+
+```javascript
+gql`
+  type Query {
+    person(id: number): People
+  }
+`;
+
+const resolvers = {
+  Query: {
+    //조건을 줄 수 있으며 args 객체는 인자로 넘겨준 값을 갖고있음
+    person: (parent, args, context, info) => args.id === data.id,
+  },
+};
+```
+
+<img src="gitImages\Arg.PNG">
+
+위와같다.
