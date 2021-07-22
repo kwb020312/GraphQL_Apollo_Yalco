@@ -129,3 +129,25 @@ const resolvers = {
 <img src="gitImages\Mutation.PNG">
 
 쿼리와 마찬가지로 Mutation내부에서 함수를 선언할 때 출력값을 설정했다면 중괄호 내부에 조회할 데이터를 넣어 함수작동과 동시에 데이터 조회가 가능하다 ex) 데이터를 추가한 후 해당 데이터 출력
+
+### :package: 모듈화
+
+만약 우리의 쿼리 수 및 적용해야하는 데이터의 수가 많아진다면 index.js는 매우 무겁고 길어지며, 가독성 또한 현저하게 떨어질 것이다. 이를 방지하기 위해 GraphQL은 모듈화를 가능하게 해주는데, 인자를 배열로 넣을 수 있게 개발해놓았다.
+
+<img src="gitImages\Modularize.PNG">
+
+```javascript
+// Other JS File
+module.exports = { typeDefs, resolvers };
+
+// index.js
+
+// require All typeDefs, resolvers
+const typeDefs = [...AllTypeDefs];
+
+const resolvers = [...AllResolvers];
+
+const server = new ApolloServer({ typeDefs, resolvers });
+```
+
+위와같이 배열로 전달이 가능하기 때문에 모듈화가 쉽게 가능하다.
