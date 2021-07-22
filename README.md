@@ -19,3 +19,11 @@ GraphQL & Apollo 에 대한 학습을 위하여 만들었음
 <img src="gitImages\Take_Data.PNG">
 
 즉 자신의 입맛대로 원하는 데이터만을 한번에 가져올 수 있다는 것이다.
+
+### :rocket: Apollo
+
+해당 저장소에서는 Apollo를 활용할 것인데 이를 사용하는 이유는 간단하다.
+
+<img src="gitImages\Why Apollo.jpg">
+
+GraphQL 공식문서에도 나와있는 지원 플렛폼이며, 프론트 & 백엔드 단을 모두 지원하기 때문이며 이를 웹에 표시하는 프레임워크로는 리엑트를 사용한다.
