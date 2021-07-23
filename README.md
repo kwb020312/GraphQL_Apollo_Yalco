@@ -232,3 +232,23 @@ const typeDefs = gql`
 ```
 
 위와 같이 적용하고싶은 타입 뒤에 implements (InterFaceName) 으로 선언하면 된다.
+
+### :round_pushpin: Args & Input
+
+인자와 Input타입은 어떻게 정의하여 사용해야할까? 이전에도 다룬적이 있지만,
+
+```javascript
+// queries.js
+const typeDefs = gql`
+  type Query {
+    peopleFiltered(
+      team: Int
+      sex: Sex
+      blood_type: BloodType
+      from: String
+    ): [People]
+  }
+`;
+```
+
+위와같이 받을 인자의 이름과 타입을 정의해주면 인자를 넘겨줄 때 해당 타입의 인자밖에 받지 않는다. 이후 기존 타입 적용과 동일하게 반환하는 데이터의 타입또한 선언해주어야함
