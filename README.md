@@ -194,3 +194,41 @@ const typeDefs = gql`
 ```
 
 위의 예제의 조건과 같음 반드시 developer, designer, planner이 온다고 명시하는 것
+
+### :heavy_plus_sign: Union
+
+Union은 하나의 배열에 여러개의 정보를 출력하고 싶을 때 사용된다.
+
+기본적으로 | 로 두 개의 타입을 구분할 수 있게 선언되며 형식은
+
+```javascript
+union UnionType = Book | Author
+```
+
+위와 같이 선언되며 만약 타입을 UnionType으로 명시한다면 Book과 Author 둘 다 올 수 있음
+
+### :tropical_drink: Interface
+
+interface는 각 타입들이 같은 유형을 중복해서 포함하는 경우에 사용이 용이한데,
+
+```javascript
+// tools.js
+const typeDefs = gql`
+  interface Tool {
+    id: ID!
+    used_by: Role!
+  }
+`;
+
+// softwares.js
+const typeDefs = gql`
+  type Software implements Tool {
+    id: ID!
+    used_by: Role!
+    developed_by: String!
+    description: String
+  }
+`;
+```
+
+위와 같이 적용하고싶은 타입 뒤에 implements (InterFaceName) 으로 선언하면 된다.
