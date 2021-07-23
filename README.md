@@ -151,3 +151,46 @@ const server = new ApolloServer({ typeDefs, resolvers });
 ```
 
 위와같이 배열로 전달이 가능하기 때문에 모듈화가 쉽게 가능하다.
+
+### :file_folder: Enum
+
+Enum은 해당 조건이 만족하는 데이터만을 반환하는 조건이며 해당 강의에서는
+
+```javascript
+// _enums.js
+const typeDefs = gql`
+  enum Role {
+    developer
+    designer
+    planner
+  }
+`;
+
+// equipmets.js
+const typeDefs = gql`
+  type Equipment {
+    ...
+    used_by: Role!
+    ...
+  }
+`;
+```
+
+위와 같이 사용하는데 used_by는 developer, designer, planner 만이 올 수 있다고 명시하는 것이다.
+
+### :heavy_exclamation_mark: !
+
+!는 MySQL의 Not Null과 같은 역할을 하며 데이터가 Null인 행을 조회하지 않는 것이다.
+
+```javascript
+// equipmets.js
+const typeDefs = gql`
+  type Equipment {
+    ...
+    used_by: Role!
+    ...
+  }
+`;
+```
+
+위의 예제의 조건과 같음 반드시 developer, designer, planner이 온다고 명시하는 것
