@@ -251,4 +251,6 @@ const typeDefs = gql`
 `;
 ```
 
+<img src="gitImages\Args Type Error.jpg">
+
 위와같이 받을 인자의 이름과 타입을 정의해주면 인자를 넘겨줄 때 해당 타입의 인자밖에 받지 않는다. 이후 기존 타입 적용과 동일하게 반환하는 데이터의 타입또한 선언해주어야함
